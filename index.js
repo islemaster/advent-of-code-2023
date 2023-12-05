@@ -25,13 +25,14 @@ const inputDir = path.resolve(__dirname, "inputs", `day${day}`);
 const inputFiles = fs.readdirSync(inputDir);
 
 async function main() {
+  const partNumber = args.part ?? 1;
   for (const inputFile of inputFiles) {
     if (args.testcase && inputFile != args.testcase) {
       continue;
     }
     const inputFilePath = path.resolve(inputDir, inputFile);
     console.log(`\n----------------\n  Running ${inputFile}\n----------------`);
-    await dayModule(inputFilePath);
+    await dayModule(inputFilePath, partNumber);
   }
   console.log(`\n----------------\n  Done.`);
 }
